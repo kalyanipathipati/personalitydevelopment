@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Resources - Personality Insights</title>
+    <script src="https://kit.fontawesome.com/f4101b5333.js" crossorigin="anonymous"></script>
+<style>
+    /* Reset some default styles */
+    body, h1, h2, h3, p, ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: black; /* Set default text color to black */
+    }
+
+    /* Header styles */
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px; /* Reduced padding */
+        background: rgba(255, 255, 255, 0.9); /* White background for header */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: fixed; /* Fix the header to the top */
+        top: 0;
+        left: 0;
+        width: 100%; /* Ensure full width */
+        z-index: 999;
+        height: 60px; /* Set height for the header */
+    }
+
+    nav {
+        display: flex; /* Flexbox for horizontal alignment */
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex; /* Horizontal list */
+        list-style: none;
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Reduced horizontal spacing */
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        font-size: 14px; /* Reduced font size */
+        font-weight: 600;
+        color: black; /* Set navbar text color to black */
+        transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        color: #088178; /* Change color on hover */
+    }
+
+    nav ul li a.active {
+        position: relative; /* Ensure the link is positioned relative for the pseudo-element */
+        text-decoration: none; /* Remove the default underline */
+        color: #088178;
+    }
+
+    nav ul li a.active::after {
+        content: ''; /* Create a pseudo-element */
+        display: block; /* Make it block-level for height and width */
+        width: 50%; /* Adjust width to your preference */
+        height: 2px; /* Adjust the thickness of the underline */
+        background-color: #088178; /* Set the underline color */
+        position: absolute; /* Position it absolutely within the link */
+        left: 25%; /* Center the underline; adjust this value to your preference */
+        bottom: -5px; /* Position it slightly below the text */
+        transition: width 0.3s ease; /* Optional: smooth transition */
+    }
+
+    /* Main content styles */
+    main {
+        padding: 40px;
+        text-align: center;
+        max-width: 800px;
+        margin: -15px auto; /* Reduced margin-top to decrease space */
+        background: transparent; /* Remove background color */
+    }
+
+    h2 {
+        font-size: 2.5em; /* Increased font size */
+        margin-bottom: 10px; /* Reduced margin */
+        color: white; /* Set heading color to white */
+    }
+
+    p {
+        font-size: 1.2em;
+        margin-bottom: 20px; /* Reduced margin */
+        color: red; /* Set resource description color to red */
+    }
+
+    /* Book section styles */
+    .book-section {
+        margin-bottom: 30px; /* Reduced space between sections */
+        text-align: left;
+    }
+
+    .book-section h3 {
+        margin-left: 50px;
+        margin-bottom: 10px; /* Reduced margin */
+        color: #088178; /* Section title color */
+    }
+
+    .book-list {
+        margin-left: -50px;
+        margin-right: -50px;
+        display: flex; /* Flexbox for horizontal alignment */
+        flex-wrap: wrap; /* Allow wrapping to the next line */
+        justify-content: center; /* Center items */
+        list-style: none; /* No bullet points */
+        padding: 0; /* Remove default padding */
+    }
+
+    .book-list li {
+        display: flex; /* Flex for image and title */
+        flex-direction: column; /* Stack image on top of title */
+        align-items: center; /* Center items horizontally */
+        margin: 15px; /* Spacing between items */
+        width: 140px; /* Set width for consistent sizing */
+        height: 300px; /* Fixed height for consistent layout */
+    }
+
+    .book-list span {
+        background: #f9f9f9; /* Background color for title block */
+        padding: 5px; /* Padding around title */
+        border-radius: 4px; /* Rounded corners */
+        text-align: center; /* Center title text */
+        width: 100%; /* Full width for block */
+        margin-top: 5px; /* Space above the title */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    }
+
+    /* Hover effect for book title */
+    .book-list span:hover {
+        background: #088178; /* Change background color on hover */
+        color: white; /* Change text color on hover */
+    }
+
+    .book-list img {
+        width: 150px; /* Increased width for images */
+        height: 220px; /* Maintain aspect ratio */
+        margin-bottom: 5px; /* Space between image and title */
+        transition: transform 0.3s ease; /* Add transition for smooth zoom effect */
+    }
+
+    /* Add this hover effect for zoom-in */
+    .book-list img:hover {
+        transform: scale(1.1); /* Scale image up to 110% on hover */
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9); /* White background for footer */
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        color: black; /* Set footer text color to black */
+    }
+</style>
+
+</head>
+<body>
+    <header>
+        <h1>Resources</h1>
+        <nav>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/resources" class="active">Resources</a></li>
+                <li><a href="/forum">Community Forum</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/home1"><i class="fa-solid fa-user"></i>--</a></li> <!-- Added "Login" text -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Recommended Resources</h2>
+
+        <div class="book-section">
+            <h3>Recommended for Extroverts</h3>
+            <ul class="book-list">
+                <li>
+                    <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="Book Title 1">
+                    <span>"Can You Fake Your Personality</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image2.jpeg') }}" alt="Book Title 2">
+                    <span>The Extrovert's Survival Guide</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image3.jpeg') }}" alt="Book Title 3">
+                    <span>Hometown Friends & Influence People</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image4.jpeg') }}" alt="Book Title 4">
+                    <span>Quiet</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image5.jpg') }}" alt="Book Title 5">
+                    <span>Extrovert Yourself</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image6.jpeg') }}" alt="Book Title 6">
+                    <span>How To Be An Introvert In An Extrovert World</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image7.jpeg') }}" alt="Book Title 7">
+                    <span>The Introvert Advantage</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image8.jpeg') }}" alt="Book Title 8">
+                    <span>Spirituality Of Extrovert</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image9.jpeg') }}" alt="Book Title 9">
+                    <span>Escaping The Introvert World</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image10.jpg') }}" alt="Book Title 10">
+                    <span>Extrovert Yourself</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="book-section">
+            <h3>Recommended for Introverts</h3>
+            <ul class="book-list">
+                <li>
+                    <img src="{{ url_for('static', filename='images/image11.jpg') }}" alt="Book Title 1">
+                    <span>Quiet</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image12.jpeg') }}" alt="Book Title 2">
+                    <span>The Secret Lives Of Introverts</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image13.jpeg') }}" alt="Book Title 3">
+                    <span>The Highly Sensitive Person</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image14.jpeg') }}" alt="Book Title 4">
+                    <span>The Introvert Advantage</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image15.jpeg') }}" alt="Book Title 5">
+                    <span>Introvert Power</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image8.jpeg') }}" alt="Book Title 8">
+                    <span>Spirituality For Extroverts</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image17.jpeg') }}" alt="Book Title 7">
+                    <span>The Introvert's way</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image18.jpeg') }}" alt="Book Title 8">
+                    <span>Quiet Influence</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image19.jpeg') }}" alt="Book Title 9">
+                    <span>Quiet Girl In A Noisy World</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image20.jpg') }}" alt="Book Title 10">
+                    <span>The Introvert's Guide to life</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="book-section">
+            <h3>Other Books You Might Like</h3>
+            <ul class="book-list">
+                <li>
+                    <img src="{{ url_for('static', filename='images/image21.jpg') }}" alt="Book Title 1">
+                    <span>Atomic Habits</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image22.png') }}" alt="Book Title 2">
+                    <span>The 7 Habits Of Highly Effective People</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image23.jpeg') }}" alt="Book Title 3">
+                    <span>Paulo</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image24.jpeg') }}" alt="Book Title 4">
+                    <span>The Power Of Now</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image25.jpeg') }}" alt="Book Title 5">
+                    <span>Mindset</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image26.jpeg') }}" alt="Book Title 6">
+                    <span>Man's Search For Meaning</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image27.jpeg') }}" alt="Book Title 7">
+                    <span>Jurnal</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image28.jpeg') }}" alt="Book Title 8">
+                    <span>Sapiens</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image29.jpeg') }}" alt="Book Title 9">
+                    <span>Book Title 9</span>
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/image30.jpeg') }}" alt="Book Title 10">
+                    <span>The Psychology Of Money</span>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+</body>
+</html>

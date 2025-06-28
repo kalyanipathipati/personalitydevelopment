@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Tests - Personality Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.9.2/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.9.2/core.js"></script>
+    <a style="text-decoration: underline;" href="https://github.com/pyscript/pyscript/issues/257#issuecomment-1119595062">this reference</a>
+</head>
+<body>
+    <header>
+        <h1>Personality Tests</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/types">Personality Types</a></li>
+                <li><a href="/tests">Personality Tests</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/relationships">Relationships</a></li>
+                <li><a href="/faq">FAQs</a></li>
+                <li><a href="/forum">Community Forum</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Take a Test</h2>
+        <p>Find out your personality type with our fun and interactive quizzes!</p>
+
+        <form id="personalityForm" method="POST" action="/submit">
+            <h2>Personality Quiz</h2>
+
+            <label>1. Do you enjoy spending time alone?</label>
+            <input type="radio" name="q1" value="yes" required> Yes
+            <input type="radio" name="q1" value="no"> No
+
+            <label>2. Do you feel energized after socializing?</label>
+            <input type="radio" name="q2" value="yes" required> Yes
+            <input type="radio" name="q2" value="no"> No
+
+            <label>3. Do you prefer deep conversations over small talk?</label>
+            <input type="radio" name="q3" value="yes" required> Yes
+            <input type="radio" name="q3" value="no"> No
+
+            <label>4. Do you often seek out social gatherings?</label>
+            <input type="radio" name="q4" value="yes" required> Yes
+            <input type="radio" name="q4" value="no"> No
+
+            <label>5. Do you feel drained after large social events?</label>
+            <input type="radio" name="q5" value="yes" required> Yes
+            <input type="radio" name="q5" value="no"> No
+
+            <label>6. Do you enjoy meeting new people?</label>
+            <input type="radio" name="q6" value="yes" required> Yes
+            <input type="radio" name="q6" value="no"> No
+
+            <label>7. Do you often prefer quiet nights in?</label>
+            <input type="radio" name="q7" value="yes" required> Yes
+            <input type="radio" name="q7" value="no"> No
+
+            <label>8. Do you feel comfortable in large groups?</label>
+            <input type="radio" name="q8" value="yes" required> Yes
+            <input type="radio" name="q8" value="no"> No
+
+            <button type="submit">Submit</button>
+        </form>
+        
+        {% if personality_type %}
+        <py-script src="app.py">
+        </py-script>
+            <h3>Your Personality Type is: {{ personality_type }}</h3>
+        {% endif %}
+    </main>
+   
+    <footer>
+        <p>&copy; 2024 Personality Insights</p>
+    </footer>
+</body>
+</html>
+
+

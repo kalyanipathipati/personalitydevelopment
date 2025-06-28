@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Quiz</title>
+    <script src="https://kit.fontawesome.com/f4101b5333.js" crossorigin="anonymous"></script>
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: black; /* Set default text color to black */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.9); /* White background for header */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fix the header to the top */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ensure full width */
+            z-index: 999;
+            height: 60px; /* Set height for the header */
+        }
+
+        nav {
+            display: flex; /* Flexbox for horizontal alignment */
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex; /* Horizontal list */
+            list-style: none;
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Reduced horizontal spacing */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 14px; /* Reduced font size */
+            font-weight: 600;
+            color: black; /* Set navbar text color to black */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #088178; /* Change color on hover */
+        }
+
+        nav ul li a.active {
+            position: relative; /* Ensure the link is positioned relative for the pseudo-element */
+            text-decoration: none; /* Remove the default underline */
+            color: #088178;
+        }
+
+        nav ul li a.active::after {
+            content: ''; /* Create a pseudo-element */
+            display: block; /* Make it block-level for height and width */
+            width: 50%; /* Adjust width to your preference */
+            height: 2px; /* Adjust the thickness of the underline */
+            background-color: #088178; /* Set the underline color */
+            position: absolute; /* Position it absolutely within the link */
+            left: 25%; /* Center the underline; adjust this value to your preference */
+            bottom: -5px; /* Position it slightly below the text */
+            transition: width 0.3s ease; /* Optional: smooth transition */
+        }
+
+        .container { 
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto; /* Center the container horizontally */
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Use a percentage for responsiveness */
+            max-width: 600px; /* Maintain max width */
+            overflow: hidden; /* Prevent content overflow */
+        }
+
+        h1 {
+            color: #088178;
+            text-align: center; /* Center the header */
+        }
+
+        h2 {
+            color: red;
+            text-align: center; /* Center the subtitle */
+        }
+
+        ol {
+            list-style-position: inside; /* Align list items inside the container */
+            padding-left: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        li {
+            margin: 15px 0;
+            text-align: left; /* Align text to the left */
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #088178;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block; /* Ensure it occupies full width */
+            margin: 20px auto; /* Center the button */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #066a6a;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Personality Insights!</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/forum">Community Forum</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/home1"><i class="fa-solid fa-user"></i> --</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Personality Quiz</h1>
+    <form method="POST" action="/result">
+        <h2>Please answer the following questions (Yes/No):</h2>
+        <ol>
+            <li>Do you enjoy spending time alone?</li>
+            <input type="radio" name="q1" value="yes" required> Yes
+            <input type="radio" name="q1" value="no"> No
+
+            <li>Do you prefer deep conversations over small talk?</li>
+            <input type="radio" name="q2" value="yes" required> Yes
+            <input type="radio" name="q2" value="no"> No
+
+            <li>Do you find social gatherings exhausting?</li>
+            <input type="radio" name="q3" value="yes" required> Yes
+            <input type="radio" name="q3" value="no"> No
+
+            <li>Do you enjoy meeting new people?</li>
+            <input type="radio" name="q4" value="yes" required> Yes
+            <input type="radio" name="q4" value="no"> No
+
+            <li>Do you often think before speaking?</li>
+            <input type="radio" name="q5" value="yes" required> Yes
+            <input type="radio" name="q5" value="no"> No
+
+            <li>Do you prefer to express yourself in writing rather than verbally?</li>
+            <input type="radio" name="q6" value="yes" required> Yes
+            <input type="radio" name="q6" value="no"> No
+
+            <li>Do you enjoy being the center of attention?</li>
+            <input type="radio" name="q7" value="yes" required> Yes
+            <input type="radio" name="q7" value="no"> No
+
+            <li>Do you often feel drained after social interactions?</li>
+            <input type="radio" name="q8" value="yes" required> Yes
+            <input type="radio" name="q8" value="no"> No
+
+            <li>Do you like to plan social events?</li>
+            <input type="radio" name="q9" value="yes" required> Yes
+            <input type="radio" name="q9" value="no"> No
+
+            <li>Do you prefer a quiet night in over a loud party?</li>
+            <input type="radio" name="q10" value="yes" required> Yes
+            <input type="radio" name="q10" value="no"> No
+
+            <li>Do you often initiate conversations?</li>
+            <input type="radio" name="q11" value="yes" required> Yes
+            <input type="radio" name="q11" value="no"> No
+
+            <li>Do you enjoy working in teams?</li>
+            <input type="radio" name="q12" value="yes" required> Yes
+            <input type="radio" name="q12" value="no"> No
+
+            <li>Do you find it easy to make new friends?</li>
+            <input type="radio" name="q13" value="yes" required> Yes
+            <input type="radio" name="q13" value="no"> No
+
+            <li>Do you prefer to listen rather than talk in conversations?</li>
+            <input type="radio" name="q14" value="yes" required> Yes
+            <input type="radio" name="q14" value="no"> No
+
+            <li>Do you enjoy large gatherings of people?</li>
+            <input type="radio" name="q15" value="yes" required> Yes
+            <input type="radio" name="q15" value="no"> No
+
+            <li>Do you often rely on data and facts when making decisions?</li>
+            <input type="radio" name="q16" value="yes" required> Yes
+            <input type="radio" name="q16" value="no"> No
+
+            <li>Do you trust your gut feeling when deciding something important?</li>
+            <input type="radio" name="q17" value="yes" required> Yes
+            <input type="radio" name="q17" value="no"> No
+
+            <li>Do you prefer to make decisions quickly rather than overthink them?</li>
+            <input type="radio" name="q18" value="yes" required> Yes
+            <input type="radio" name="q18" value="no"> No
+
+            <li>Do you consult others before making a major decision?</li>
+            <input type="radio" name="q19" value="yes" required> Yes
+            <input type="radio" name="q19" value="no"> No
+
+            <li>Do you often reflect on past decisions to improve future ones?</li>
+            <input type="radio" name="q20" value="yes" required> Yes
+            <input type="radio" name="q20" value="no"> No
+        </ol>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>

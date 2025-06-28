@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif; /* Set font */
+            line-height: 1.6; /* Improve line spacing */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center align items */
+            justify-content: center; /* Center justify items */
+            height: 100vh; /* Full viewport height */
+            background-color: #f4f4f4; /* Light background color */
+        }
+
+        /* Heading styles */
+        h1 {
+            color: #333; /* Darker text color for the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        /* Image styling */
+        img {
+            max-width: 50%; /* Limit the image width to 80% of the container */
+            height: 50%; /* Maintain aspect ratio */
+            border: 2px solid #088178; /* Optional border around the image */
+            border-radius: 10px; /* Rounded corners for the image */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+        }
+    </style>
+</head>
+<body>
+    <h1>Emotion Detection</h1>
+    <img src="{{ url_for('video') }}" alt="Emotion Detection Camera">
+</body>
+</html>
+

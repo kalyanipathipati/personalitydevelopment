@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+      <script src="https://kit.fontawesome.com/f4101b5333.js" crossorigin="anonymous"></script>
+    <style>
+        /* Body styling */
+             body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body styles */
+        body {
+            margin-top:100px;
+            margin-left:300px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: black; /* Set default text color to black */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        /* Header styles */
+        header {
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.9); /* White background for header */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fix the header to the top */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ensure full width */
+            z-index: 999;
+            height: 60px; /* Set height for the header */
+        }
+
+        nav {
+            display: flex; /* Flexbox for horizontal alignment */
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex; /* Horizontal list */
+            list-style: none;
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Reduced horizontal spacing */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 14px; /* Reduced font size */
+            font-weight: 600;
+            color: black; /* Set navbar text color to black */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #088178; /* Change color on hover */
+        }
+
+
+
+ nav ul li a.active {
+    position: relative; /* Ensure the link is positioned relative for the pseudo-element */
+    text-decoration: none; /* Remove the default underline */
+   color:#088178;
+}
+
+nav ul li a.active::after {
+    content: ''; /* Create a pseudo-element */
+    display: block; /* Make it block-level for height and width */
+    width: 50%; /* Adjust width to your preference */
+    height: 2px; /* Adjust the thickness of the underline */
+    background-color: #088178; /* Set the underline color */
+    position: absolute; /* Position it absolutely within the link */
+    left: 25%; /* Center the underline; adjust this value to your preference */
+    bottom: -5px; /* Position it slightly below the text */
+    transition: width 0.3s ease; /* Optional: smooth transition */
+    text-color:#088178;
+}
+
+        /* Container for the form */
+        .login-container {
+            background: white; /* White background for form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 20px; /* Padding inside the form */
+            max-width: 400px; /* Maximum width of the form */
+            width: 100%; /* Responsive width */
+            text-align: center; /* Center text in the container */
+        }
+
+        /* Styling for headings */
+        h1 { 
+            margin-top:20px;
+            color: black; /* Heading color */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        /* Styling for input fields */
+        input[type="text"],
+        input[type="password"] {
+      
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding inside input fields */
+            margin-bottom: 15px; /* Space below input fields */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+            box-sizing: border-box; /* Include padding and border in width */
+             /* Text color for input fields */
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            background-color: #088178; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px; /* Padding for button */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        /* Button hover effect */
+        input[type="submit"]:hover {
+            background-color: #066e66; /* Darker shade on hover */
+        }
+
+        /* Error message styling */
+        .error {
+            color: red; /* Red color for error message */
+            margin-bottom: 20px; /* Space below error message */
+        }
+
+        /* Flexbox styling for labels and inputs */
+        .form-group {
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            justify-content: space-between; /* Space between label and input */
+            margin-bottom: 15px; /* Space below form groups */
+        }
+
+        label {
+            margin-right: 10px; /* Space between label and input */
+            color: black; /* Label color */
+            flex: 0 0 100px; /* Fixed width for labels */
+            text-align: right; /* Align text to the right */
+        }
+    </style>
+</head>
+<body>
+
+   <header>
+        <h1>Welcome!!</h1>
+        <nav>
+            <ul>
+                <li><a href="/" >Home</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/forum">Community Forum</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/home1" class="active"><i class="fa-solid fa-user"></i>--</a></li> <!-- Added "Login" text -->
+            </ul>
+        </nav>
+    </header>
+    <div class="login-container">
+        <h1>Login</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

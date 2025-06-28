@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+   <script src="https://kit.fontawesome.com/f4101b5333.js" crossorigin="anonymous"></script>
+    <style>
+      body, h1, h2, h3, p, ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body styles */
+    body {
+        
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: black; /* Set default text color to black */
+    }
+    /* Header styles */
+    header {
+     
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px; /* Reduced padding */
+        background: rgba(255, 255, 255, 0.9); /* White background for header */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: fixed; /* Fix the header to the top */
+        top: 0;
+        left: 0;
+        width: 100%; /* Ensure full width */
+        z-index: 999;
+        height: 60px; /* Set height for the header */
+    }
+
+    nav {
+        display: flex; /* Flexbox for horizontal alignment */
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex; /* Horizontal list */
+        list-style: none;
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Reduced horizontal spacing */
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        font-size: 14px; /* Reduced font size */
+        font-weight: 600;
+        color: black; /* Set navbar text color to black */
+        transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        color: #088178; /* Change color on hover */
+    }
+
+    nav ul li a.active {
+        position: relative; /* Ensure the link is positioned relative for the pseudo-element */
+        text-decoration: none; /* Remove the default underline */
+        color: #088178;
+    }
+
+    nav ul li a.active::after {
+        content: ''; /* Create a pseudo-element */
+        display: block; /* Make it block-level for height and width */
+        width: 50%; /* Adjust width to your preference */
+        height: 2px; /* Adjust the thickness of the underline */
+        background-color: #088178; /* Set the underline color */
+        position: absolute; /* Position it absolutely within the link */
+        left: 25%; /* Center the underline; adjust this value to your preference */
+        bottom: -5px; /* Position it slightly below the text */
+        transition: width 0.3s ease; /* Optional: smooth transition */
+    }
+
+    /* Main content styles */
+    main {
+        
+        padding: 40px;
+        text-align: center;
+        max-width: 800px;
+        margin: -15px auto; /* Reduced margin-top to decrease space */
+        background: transparent; /* Remove background color */
+    }
+
+    h2 {
+        font-size: 2.5em; /* Increased font size */
+        margin-bottom: 10px; /* Reduced margin */
+        color: white; /* Set heading color to white */
+    }
+
+    p {
+        font-size: 1.2em;
+        margin-bottom: 20px; /* Reduced margin */
+        color: red; /* Set resource description color to red */
+    }
+
+        a {
+            color: #088178; /* Use the specified color for links */
+            text-decoration: none; /* Remove underline from links */
+            font-weight: bold; /* Make links bold */
+        }
+
+        .button {
+            margin-top:-10px;
+            display: inline-block; /* Display as inline block for button effect */
+            padding: 10px 20px; /* Padding for the button */
+            font-size: 16px; /* Font size */
+            background-color: #088178; /* Button background color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor changes to pointer on hover */
+            text-align: center; /* Center the text */
+             /* Spacing around buttons */
+            text-decoration: none; /* Remove underline from links */
+            transition: background-color 0.3s ease; /* Smooth background color change */
+        }
+
+        .button:hover {
+            background-color: #066e66; /* Darker shade on hover */
+        }
+
+        .container {
+                margin-top:180px;	
+                margin-left:250px; 
+                height:100px;
+                        max-width: 500px; /* Limit the width of the content */
+             /* Center the container */
+            background: white; /* White background for the container */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px; /* Padding inside the container */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text in container */
+             
+        }
+    
+ 
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login In</h1>
+        <nav>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/resources" >Resources</a></li>
+                <li><a href="/forum">Community Forum</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/home1" class="active"><i class="fa-solid fa-user"></i>--</a></li> <!-- Added "Login" text -->
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        {% if username %}
+            <p>Hello, {{ username }}! <a href="{{ url_for('logout') }}"><br>Logout</a></p>
+        {% else %}
+            <p><a href="{{ url_for('login') }}">Login</a> <br>If you don't have an account?
+ <a href="{{ url_for('register') }}">Register</a></p>
+        {% endif %}
+    </header>
+    <main>
+        <h2>Your Content Here</h2>
+         <p>
+            <a href="{{ url_for('video') }}" class="button">Emotion Detection</a>
+        </p>
+    </main>
+   
+</body>
+</html>

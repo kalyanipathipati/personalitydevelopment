@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home - Personality Quiz</title>
+    <script src="https://kit.fontawesome.com/f4101b5333.js" crossorigin="anonymous"></script>
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: black; /* Set default text color to black */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.9); /* White background for header */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fix the header to the top */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ensure full width */
+            z-index: 999;
+            height: 60px; /* Set height for the header */
+        }
+
+        nav {
+            display: flex; /* Flexbox for horizontal alignment */
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex; /* Horizontal list */
+            list-style: none;
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Reduced horizontal spacing */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 14px; /* Reduced font size */
+            font-weight: 600;
+            color: black; /* Set navbar text color to black */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #088178; /* Change color on hover */
+        }
+
+
+
+ nav ul li a.active {
+    position: relative; /* Ensure the link is positioned relative for the pseudo-element */
+    text-decoration: none; /* Remove the default underline */
+   color:#088178;
+}
+
+nav ul li a.active::after {
+    content: ''; /* Create a pseudo-element */
+    display: block; /* Make it block-level for height and width */
+    width: 50%; /* Adjust width to your preference */
+    height: 2px; /* Adjust the thickness of the underline */
+    background-color: #088178; /* Set the underline color */
+    position: absolute; /* Position it absolutely within the link */
+    left: 25%; /* Center the underline; adjust this value to your preference */
+    bottom: -5px; /* Position it slightly below the text */
+    transition: width 0.3s ease; /* Optional: smooth transition */
+    text-color:#088178;
+}
+
+        /* Main content styles */
+        main {
+            padding: 40px; /* Increased padding for overall spacing */
+            text-align: left; /* Align text to the left */
+            margin: 100px auto 0; /* Adjusted margin-top to account for header height */
+            position: relative; /* For absolute positioning of the image */
+            z-index: 1; /* Ensure main content is above the image */
+        }
+
+        h1 {
+            color: black; /* Set header text color to black */
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333; /* Set heading color to dark gray for better contrast */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: red; /* Set quiz prompt color to red */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #088178;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #066e66;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* White background for footer */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            color: black; /* Set footer text color to black */
+        }
+
+        /* Image styles */
+        .background-image {
+            position: absolute; /* Position the image absolutely */
+            top: 50px; /* Align to the bottom of the header */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 100%; /* Prevent overflow */
+            z-index: 0; /* Place it below other content */
+            opacity: 0.5; /* Optional: make the image semi-transparent */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Personality Insights!</h1>
+        <nav>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/forum">Community Forum</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/home1"><i class="fa-solid fa-user"></i> --</a></li> <!-- Added "Login" text -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Discover Your Personality</h2>
+        <p>Take our quick quiz to find out whether you are an Introvert, <br>Extrovert, or Ambivert!</p>
+        <a href="/quiz"><button>Start Quiz</button></a>
+         {% if username %}
+            <a href="{{ url_for('quiz') }}" class="btn">Start Quiz</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn"></a>
+        {% endif %}
+    </main>
+
+    <!-- Background image -->
+    <img src="{{ url_for('static', filename='images/bg1.avif') }}" alt="Background" class="background-image">
+
+  
+</body>
+</html>

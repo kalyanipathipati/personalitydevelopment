@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Quiz Result</title>
+    <script src="https://kit.fontawesome.com/f4101b5333.js" crossorigin="anonymous"></script>
+    <style>
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: black; /* Set default text color to black */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.9); /* White background for header */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fix the header to the top */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ensure full width */
+            z-index: 999;
+            height: 60px; /* Set height for the header */
+        }
+
+        nav {
+            display: flex; /* Flexbox for horizontal alignment */
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex; /* Horizontal list */
+            list-style: none;
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Reduced horizontal spacing */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 14px; /* Reduced font size */
+            font-weight: 600;
+            color: black; /* Set navbar text color to black */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #088178; /* Change color on hover */
+        }
+
+        nav ul li a.active {
+            position: relative; /* Ensure the link is positioned relative for the pseudo-element */
+            text-decoration: none; /* Remove the default underline */
+            color: #088178;
+        }
+
+        nav ul li a.active::after {
+            content: ''; /* Create a pseudo-element */
+            display: block; /* Make it block-level for height and width */
+            width: 50%; /* Adjust width to your preference */
+            height: 2px; /* Adjust the thickness of the underline */
+            background-color: #088178; /* Set the underline color */
+            position: absolute; /* Position it absolutely within the link */
+            left: 25%; /* Center the underline; adjust this value to your preference */
+            bottom: -5px; /* Position it slightly below the text */
+            transition: width 0.3s ease; /* Optional: smooth transition */
+            text-color: #088178;
+        }
+
+        .container {
+            margin-left: 130px;
+            margin-top: 100px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 800px;
+        }
+
+        h1, h2, h3 {
+            color: #088178;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 30px;
+            background-color: #088178;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+
+        button {
+            background-color: #088178;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #066a6a;
+        }
+
+        /* New styles for recommendations layout */
+        .recommendations {
+            display: flex; /* Use Flexbox for layout */
+            justify-content: space-between; /* Space between the two sections */
+            margin: 20px 0; /* Margin for top and bottom spacing */
+        }
+
+        .recommendation-list {
+            flex: 1; /* Take equal space */
+            margin: 0 10px; /* Margin between the two sections */
+            border: 1px solid #e0e0e0; /* Optional border */
+            border-radius: 5px; /* Optional rounded corners */
+            padding: 10px; /* Add padding inside the lists */
+        }
+
+        .analysis-container {
+            display: flex; /* Use Flexbox to place pie chart next to analysis */
+            justify-content: space-between; /* Space between analysis and chart */
+            align-items: flex-start; /* Align items at the top */
+            margin: 20px 0; /* Margin for top and bottom spacing */
+        }
+
+        .pie-chart {
+            margin-top:-10px;
+            max-width: 500px; /* Set a maximum width for the pie chart */
+            margin-left: 20px; /* Add some space between the analysis and chart */
+        }
+
+        .introversion {
+            font-size: 0.9em; /* Slightly smaller font size */
+        }
+
+        /* Custom list style */
+        .insights ul {
+            list-style-position: inside; /* Place bullet points inside the list */
+            padding-left: 0; /* Remove padding */
+            margin-left: 10px; /* Align the list with the text */
+        }
+
+        .recommendation-list ul {
+            list-style-position: inside; /* Place bullet points inside the list */
+            padding-left: 0; /* Remove padding */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Be You!</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/forum">Community Forum</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/home1"><i class="fa-solid fa-user"></i> --</a></li> <!-- Added "Login" text -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <center><h1>Your Personality Type: {{ personality_type }}</h1></center>
+        <center>
+            <h2>Insights:</h2> <!-- Centered Insights Header --> </center>
+            <ul class="insights"> <!-- Added class for styling -->
+                {% for insight in insights %}
+                    <li>{{ insight }}</li> <!-- Display bullet points with insights -->
+                {% endfor %}
+            </ul>
+       
+
+        <div class="recommendations">
+            <div class="recommendation-list">
+                <h3>Recommended Books:</h3>
+                <ul>
+                    {% for book in books %}
+                        <li>{{ book }}</li> <!-- Display bullet points with recommended books -->
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="recommendation-list">
+                <h3>Recommended Movies:</h3>
+                <ul>
+                    {% for movie in movies %}
+                        <li>{{ movie }}</li> <!-- Display bullet points with recommended movies -->
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="analysis-container">
+            <div>
+                <h2>Decision-Making Analysis:</h2>
+                <h3>Decisions Based on Facts: </h3>{{ fact_based_count }}
+                <h3>Decisions Based on Emotions: </h3>{{ emotion_based_count }}
+            </div>
+            <img class="pie-chart" src="{{ chart_path }}" alt="Decision-Making Chart"> <!-- Positioned Pie Chart -->
+        </div>
+
+        <div class="introversion">
+            <h2>Introversion/Extroversion Progress</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: {{ (yes_count / 15) * 100 }}%;">
+                    {{ (yes_count / 15) * 100 | round(2) }}%
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <button onclick="window.location.href='/'">Take Quiz Again</button> <!-- Centered Button -->
+        </div>
+    </div>
+
+</body>
+</html>
