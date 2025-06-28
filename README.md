@@ -31,6 +31,4 @@ If the project doesn't run directly, make sure to:
 - Connect the database in the code properly
 
 ## 🙋‍♀️ Created by
-
-**Kalyani Pathipati**  
-B.B.A (Computer Application) Student  
+ 
